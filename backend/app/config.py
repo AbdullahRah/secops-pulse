@@ -65,6 +65,21 @@ class Settings(BaseSettings):
         description="Maximum events to group into a single incident",
     )
 
+    def __init__(self, **values):
+        super().__init__(**values)
+        
+        # Support Railway/Heroku PORT environment variable
+        env_port = os.getenv("PORT")
+        if env_port:
+            self.API_PORT = int(env_port)
+            
+        # Standardize DATABASE_URL for SQLAlchemy + asyncpg
+        # Railway provides "postgres://" which must be "postgresql+asyncpg://"
+        if self.DATABASE_URL.startswith("postgres://"):
+            self.DATABASE_URL = self.DATABASE_URL.replace("postgres://", "postgresql+asyncpg://", 1)
+        elif self.DATABASE_URL.startswith("postgresql://"):
+            self.DATABASE_URL = self.DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
