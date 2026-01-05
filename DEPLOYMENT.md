@@ -119,7 +119,14 @@ To host this project on Railway, follow these steps:
 3. Select your repository: `AbdullahRah/secops-pulse`.
 
 ### 2. Configure Services
-Railway will detect the `railway.json` file and should automatically create two services: `backend` and `frontend`.
+Since your project has both a `/backend` and a `/frontend`, you should create two separate services in Railway:
+
+1.  **Backend Service**:
+    *   Set **Root Directory** to `backend`.
+    *   Railway will use the `backend/Dockerfile`.
+2.  **Frontend Service**:
+    *   Set **Root Directory** to `frontend`.
+    *   Railway will use the `frontend/Dockerfile`.
 
 ### 3. Setup Database
 1. In your Railway project, click **"Add"** -> **"Database"** -> **"PostgreSQL"**.
