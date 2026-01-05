@@ -109,6 +109,37 @@ GET /api/v1/dashboard/risk-distribution
 
 Your application has been built and tested. For local development, use Docker Compose as described above.
 
+## Hosting on Railway
+
+To host this project on Railway, follow these steps:
+
+### 1. Connect GitHub Repository
+1. Log in to [Railway.app](https://railway.app/).
+2. Click **"New Project"** -> **"Deploy from GitHub repo"**.
+3. Select your repository: `AbdullahRah/secops-pulse`.
+
+### 2. Configure Services
+Railway will detect the `railway.json` file and should automatically create two services: `backend` and `frontend`.
+
+### 3. Setup Database
+1. In your Railway project, click **"Add"** -> **"Database"** -> **"PostgreSQL"**.
+2. Railway will provision a database and automatically provide the `DATABASE_URL` to your services if configured correctly.
+
+### 4. Environment Variables
+You need to set the following environment variables in the Railway dashboard for each service:
+
+#### Backend Service:
+- `GEMINI_API_KEY`: Your Google Gemini API key.
+- `DATABASE_URL`: Railway will provide this if you link the PostgreSQL service.
+- `DEBUG`: `false` for production.
+
+#### Frontend Service:
+- `NEXT_PUBLIC_API_URL`: The public URL of your **Backend Service** (e.g., `https://backend-production-xyz.up.railway.app`).
+
+### 5. Deployment
+- Railway will automatically build and deploy your services whenever you push to the `master` branch.
+- You can monitor builds and logs in the Railway dashboard.
+
 ---
 
 For questions or issues, please refer to the README.md file or the project documentation.
