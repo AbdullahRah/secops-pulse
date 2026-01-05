@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 15, 23, 42;
+  --background-rgb: 248, 250, 252;
+  
+  /* Design System Colors */
+  --color-primary: #0066FF;
+  --color-primary-subtle: #E8F0FE;
+  --color-accent: #00D4AA;
+  --color-accent-subtle: #E6F9F5;
+  --color-warning: #FFB800;
+  --color-warning-subtle: #FFF8E1;
+  --color-danger: #FF453A;
+  --color-danger-subtle: #FFE9E9;
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F1F5F9;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-text-muted: #94A3B8;
+  --color-border: #E2E8F0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* Custom scrollbar - Minimal & Clean */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-smooth-in {
+  transition: all 0.4s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Card hover effect - Subtle lift */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Risk level indicators - Subtle gradients */
+.risk-critical {
+  background: linear-gradient(135deg, #FF453A 0%, #FF6961 100%);
+}
+
+.risk-high {
+  background: linear-gradient(135deg, #FFB800 0%, #FFD93D 100%);
+}
+
+.risk-medium {
+  background: linear-gradient(135deg, #FFB800 0%, #FFD966 100%);
+}
+
+.risk-low {
+  background: linear-gradient(135deg, #00D4AA 0%, #5AE0B8 100%);
+}
+
+.risk-info {
+  background: linear-gradient(135deg, #0066FF 0%, #5AC8FA 100%);
+}
+
+/* Glow effect for AI insights */
+.ai-glow {
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.15), 0 0 40px rgba(0, 102, 255, 0.1);
+}
+
+/* Status badge styles */
+.status-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.status-open {
+  background-color: var(--color-danger-subtle);
+  color: var(--color-danger);
+}
+
+.status-investigating {
+  background-color: var(--color-warning-subtle);
+  color: var(--color-warning);
+}
+
+.status-resolved {
+  background-color: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+.status-dismissed {
+  background-color: var(--color-surface-subtle);
+  color: var(--color-text-secondary);
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply animate-pulse bg-surfaceSubtle rounded;
+}
+
+/* Badge base styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+/* Primary badge */
+.badge-primary {
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Glass morphism effect */
+.glass {
+  @apply bg-surface/80 backdrop-blur-lg border border-white/20;
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+}
